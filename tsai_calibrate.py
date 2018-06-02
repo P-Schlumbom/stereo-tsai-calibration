@@ -683,7 +683,7 @@ def get_calibration_values(input_path, report=False, optimise=True, undistort=Tr
 
     if optimise:
         #values_dict, newPoints = get_optimised_values(newPoints, r_d, values_dict, report=report)
-        values_dict = get_optimised_values(points, r_d, values_dict, report=report)
+        values_dict = get_optimised_values(points, values_dict, report=report)
     """else:
         newPoints = newPoints"""
     if report: print("---")
@@ -724,3 +724,8 @@ def get_calibration_values(input_path, report=False, optimise=True, undistort=Tr
     f.close()
 
     return values_dict#, newPoints
+
+if __name__ == "__main__":
+    jsonpath = sys.argv[1]
+
+    vals = get_calibration_values(jsonpath, True, True, True)
